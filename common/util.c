@@ -31,6 +31,7 @@
 #include "general.h"
 #include "usb.h"
 #include "serialno.h"
+#include "util.h"
 
 uint32_t DelayCounter;
 
@@ -62,6 +63,7 @@ void delay_us(uint32_t us)
 }
 
 int _write(int file, uint8_t *const ptr, const size_t len)
+//int _write(int file, char *ptr, int len)
 {
 /*	if (file == 1) {
 		size_t sent = 0;
@@ -80,9 +82,12 @@ int _write(int file, uint8_t *const ptr, const size_t len)
 	errno = EIO;
 	return -1;*/
 	int i;
+
 	if (file == 1) {
 		for (i = 0; i < len; i++)
+		{
 			usart_send_blocking(USART2, ptr[i]);
+		}
 		return i;
 	}
 

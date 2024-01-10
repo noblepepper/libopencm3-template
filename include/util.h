@@ -39,6 +39,7 @@
 void delay_ms(uint32_t ms);
 void delay_us(uint32_t us);
 bool usart_data_waiting(uint32_t port);
-int _write(int file, char *ptr, int len);
+//int _write(int file, char *ptr, int len);
+int _write(int file, uint8_t *const ptr, const size_t len);
 void cdcacm_set_config(usbd_device *usbd_dev, uint16_t wValue);
 
